@@ -4,9 +4,11 @@ import cartIcon from '@/components/icons/cartIcon.svg';
 import leafLogoIcon from '@/components/icons/leafLogoIcon.svg';
 import searchIcon from '@/components/icons/searchIcon.svg';
 import userIcon from '@/components/icons/userIcon.svg';
-import { MenuIcon, XIcon } from 'lucide-react';
+import { MenuIcon, Package, Sprout, Truck, XIcon } from 'lucide-react';
 import Image from 'next/image';
 import { useState } from 'react';
+import Footer from './_components/Footer';
+import Testimonials from './_components/Testimonials';
 
 export default function Home() {
   const [isSideMenuOpen, setIsSideMenuOpen] = useState(false);
@@ -77,7 +79,7 @@ export default function Home() {
           >
             {/* overlay bg-image sm */}
             <div className="absolute left-0 top-0 -z-10 h-full w-full bg-white opacity-80 md:hidden"></div>
-            <div className="absolute left-0 top-0 -z-20 h-full w-full bg-[url('/image-2.png')] bg-contain bg-center bg-no-repeat md:hidden"></div>
+            <div className="absolute left-0 top-0 -z-20 h-full w-full bg-[url('/sm-home-plant.png')] bg-contain bg-center bg-no-repeat md:hidden"></div>
             {/*  */}
             <div className="bg-rose-2000 mb-10 flex w-full justify-end">
               <button onClick={handleMenuClick}>{<XIcon />}</button>
@@ -135,7 +137,7 @@ export default function Home() {
         <div className="bg-red-2000 bg-rose-2000 bg-red-5000 mt-16 flex min-h-full w-full flex-[3] flex-col items-start  justify-center pl-[6%] ">
           {/* overlay bg-image sm */}
           <div className="absolute left-0 top-0 -z-10 h-full w-full bg-white opacity-80 md:hidden"></div>
-          <div className="absolute left-0 top-0 -z-20 h-full w-full bg-[url('/image-2.png')] bg-contain bg-center bg-no-repeat md:hidden"></div>
+          <div className="absolute left-0 top-0 -z-20 h-full w-full bg-[url('/sm-home-plant.png')] bg-contain bg-center bg-no-repeat md:hidden"></div>
           {/*  */}
 
           <p className="mt-5 text-sm font-semibold text-muted-foreground opacity-100">
@@ -237,7 +239,41 @@ export default function Home() {
       </div>
 
       {/*  */}
-      <div className=" h-screen bg-red-400"></div>
+      <div className="mt-10 flex max-w-full flex-wrap justify-center gap-5">
+        <div className="bg-green-70-0 bg-rose-1000 flex max-w-md items-center justify-start gap-5 p-5 ">
+          <div className=" rounded-br-3xl rounded-tl-3xl border bg-green-800 p-3">
+            <Package className="h-20 w-20 text-white" />
+          </div>
+          <div>
+            <h3 className="text-2xl font-semibold">Best Packaging</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+          </div>
+        </div>
+        <div className="bg-green-70-0 bg-rose-1000 flex max-w-md items-center justify-start gap-5 p-5 ">
+          <div className=" rounded-br-3xl rounded-tl-3xl border bg-green-800 p-3">
+            <Sprout className="h-20 w-20 text-white" />
+          </div>
+          <div>
+            <h3 className="text-2xl font-semibold">Early Sprouts</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+          </div>
+        </div>
+        <div className="bg-green-70-0 bg-rose-1000 flex max-w-md items-center justify-start gap-5 p-5 ">
+          <div className=" rounded-br-3xl rounded-tl-3xl border bg-green-800 p-3">
+            <Truck className="h-20 w-20 text-white" />
+          </div>
+          <div>
+            <h3 className="text-2xl font-semibold">Fast Delivery</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+          </div>
+        </div>
+      </div>
+
+      {/* testimonials */}
+      <Testimonials />
+
+      {/* Footer */}
+      <Footer />
     </>
   );
 }
