@@ -1,9 +1,11 @@
 'use client';
+import Link from 'next/link';
 
 import cartIcon from '@/components/icons/cartIcon.svg';
 import leafLogoIcon from '@/components/icons/leafLogoIcon.svg';
 import searchIcon from '@/components/icons/searchIcon.svg';
 import userIcon from '@/components/icons/userIcon.svg';
+import { Button } from '@/components/ui/button';
 import { MenuIcon, Package, Sprout, Truck, XIcon } from 'lucide-react';
 import Image from 'next/image';
 import { useState } from 'react';
@@ -23,41 +25,68 @@ export default function Home() {
   return (
     <>
       {/* <BreakPoint /> */}
+
       <div className="flex min-h-screen flex-col pb-5 sm:flex-row">
         {/* navbar */}
         <div className="border-green-5000 border- absolute  mt-5 h-12 w-full  bg-transparent xl:mt-8">
           <div className="border-rose-4000 border- mx-auto flex w-full justify-between">
             <ul className="border-amber-4000 border- flex w-3/5 px-5 md:justify-evenly">
-              <li className="z-20 flex gap-1">
-                <Image
-                  src={leafLogoIcon}
-                  height={24}
-                  width={24}
-                  alt="leaf-logo-icon"
-                />
-                <span className="font-bold">Petals</span>
+              <li className="z-20">
+                <Link href="/" className="flex gap-1">
+                  <Image
+                    src={leafLogoIcon}
+                    height={24}
+                    width={24}
+                    alt="leaf-logo-icon"
+                  />
+                  <span className="font-bold">Petals</span>
+                </Link>
               </li>
               <div className=" bg-red-2000  hidden w-2/3 font-semibold text-muted-foreground md:flex md:justify-evenly">
-                <li className="text-primary">Home</li>
-                <li>About</li>
-                <li>Products</li>
-                <li>Contact</li>
+                <li className="text-primary">
+                  <Link href="/">Home</Link>
+                </li>
+                <li>
+                  <Link href="/about">About</Link>
+                </li>
+                <li>
+                  <Link href="/products">Products</Link>
+                </li>
+                <li>
+                  <Link href="/contact">Contact</Link>
+                </li>
               </div>
             </ul>
-            <ul className="border-purple-4000 border- hidden w-2/5 justify-end gap-5 pr-[5%] md:flex ">
+            <ul className="border-purple-4000 border- z-10 hidden w-2/5 justify-end gap-5 pr-[5%] md:flex">
               <li>
-                <Image
-                  src={searchIcon}
-                  width={24}
-                  height={24}
-                  alt="search-icon"
-                />
+                <Link href="/search">
+                  <Image
+                    src={searchIcon}
+                    width={24}
+                    height={24}
+                    alt="search-icon"
+                  />
+                </Link>
               </li>
               <li>
-                <Image src={cartIcon} width={24} height={24} alt="cart-icon" />
+                <Link href="/cart">
+                  <Image
+                    src={cartIcon}
+                    width={24}
+                    height={24}
+                    alt="cart-icon"
+                  />
+                </Link>
               </li>
               <li>
-                <Image src={userIcon} width={24} height={24} alt="user-icon" />
+                <Link href="/profile">
+                  <Image
+                    src={userIcon}
+                    width={24}
+                    height={24}
+                    alt="user-icon"
+                  />
+                </Link>
               </li>
             </ul>
             <button onClick={handleMenuClick} className=" pr-5 md:hidden">
@@ -105,28 +134,34 @@ export default function Home() {
             <div className="bg-rose-3000 pr-5">
               <ul className="flex  justify-center gap-10">
                 <li>
-                  <Image
-                    src={searchIcon}
-                    width={24}
-                    height={24}
-                    alt="search-icon"
-                  />
+                  <Link href="/search">
+                    <Image
+                      src={searchIcon}
+                      width={24}
+                      height={24}
+                      alt="search-icon"
+                    />
+                  </Link>
                 </li>
                 <li>
-                  <Image
-                    src={cartIcon}
-                    width={24}
-                    height={24}
-                    alt="cart-icon"
-                  />
+                  <Link href="/cart">
+                    <Image
+                      src={cartIcon}
+                      width={24}
+                      height={24}
+                      alt="cart-icon"
+                    />
+                  </Link>
                 </li>
                 <li>
-                  <Image
-                    src={userIcon}
-                    width={24}
-                    height={24}
-                    alt="user-icon"
-                  />
+                  <Link href="/profile">
+                    <Image
+                      src={userIcon}
+                      width={24}
+                      height={24}
+                      alt="user-icon"
+                    />
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -144,7 +179,7 @@ export default function Home() {
             INDOOR PLANTS
           </p>
 
-          <h1 className=" mt-2 text-3xl font-medium  sm:text-5xl xl:text-7xl">
+          {/* <h1 className=" mt-2 text-3xl font-medium  sm:text-5xl xl:text-7xl">
             We help you the
             <strong className="mt-4 block font-medium">
               {' '}
@@ -152,6 +187,11 @@ export default function Home() {
                 plants
               </span>{' '}
             </strong>
+          </h1> */}
+
+          <h1 className="mt-2 text-balance  pr-2 text-3xl font-medium sm:text-4xl md:text-5xl xl:text-7xl">
+            We help you keep the world safe with
+            <span className="text-primary"> plants</span>
           </h1>
 
           <p className="my-10 w-1/2 text-lg text-muted-foreground">
@@ -161,18 +201,18 @@ export default function Home() {
           {/* buttons */}
 
           <div className=" flex gap-4">
-            <button className="bg-green-900 px-5 py-3 text-white">
+            <Button className="rounded-none" size="lg">
               Explore Now
-            </button>
-            <button className="border-2 px-5 py-3 text-green-900 hover:border-green-900">
+            </Button>
+            <Button className="rounded-none" size="lg" variant="outline">
               Learn More
-            </button>
+            </Button>
           </div>
 
           {/* cards */}
-          <div className="bg-green-4000 bg-amber-4000 mt-28 flex  w-full flex-wrap gap-2">
-            <div className="border- border-blac bg-slate-4000 ">
-              <div className="bg-green-3000 relative mr-5 flex  min-h-40 min-w-40 flex-col items-center justify-center bg-slate-200">
+          <div className=" bg-amber-4000 *:bg-pink-3000 mt-28  flex w-full flex-wrap gap-5">
+            <Link href="/" className="group">
+              <div className="bg-green-3000 relative flex min-h-48 min-w-48 flex-col items-center justify-center bg-slate-200">
                 <Image
                   src="/img1.png"
                   alt="plant"
@@ -183,11 +223,14 @@ export default function Home() {
                 />
               </div>
               <p className="mt-2 text-lg font-semibold">Microdasys</p>
-              <p className="text-sm font-semibold text-gray-600">shop now + </p>
-            </div>
+              <p className="text-sm font-semibold text-gray-600 group-hover:underline">
+                shop now +{' '}
+              </p>
+            </Link>
+
             {/*  */}
-            <div className="border- border-blac bg-slate-4000 ">
-              <div className="bg-green-3000 relative mr-5 flex  min-h-40 min-w-40 flex-col items-center justify-center bg-slate-200">
+            <Link href="/" className="group">
+              <div className="bg-green-3000 relative  flex  min-h-48 min-w-48 flex-col items-center justify-center bg-slate-200">
                 <Image
                   src="/bonsai.webp"
                   alt="plant"
@@ -198,11 +241,14 @@ export default function Home() {
                 />
               </div>
               <p className="mt-2 text-lg font-semibold">Bonsai</p>
-              <p className="text-sm font-semibold text-gray-600">shop now + </p>
-            </div>
+              <p className="text-sm font-semibold text-gray-600 group-hover:underline">
+                shop now +{' '}
+              </p>
+            </Link>
+
             {/*  */}
-            <div className="bg-slate-4000">
-              <div className="bg-green-3000 relative mr-5 flex  min-h-40 min-w-40 flex-col items-center justify-center bg-slate-200">
+            <Link href="/" className="group">
+              <div className="bg-green-3000 relative  flex  min-h-48 min-w-48 flex-col items-center justify-center bg-slate-200">
                 <Image
                   src="/indoor-plant-2.png"
                   alt="plant"
@@ -213,10 +259,10 @@ export default function Home() {
                 />
               </div>
               <p className="mt-2 text-lg font-semibold">Snake Leaves</p>
-              <button className="text-sm font-semibold text-gray-600 hover:underline">
+              <button className="text-sm font-semibold text-gray-600 group-hover:underline">
                 shop now +{' '}
               </button>
-            </div>
+            </Link>
             {/*  */}
           </div>
 
@@ -238,7 +284,7 @@ export default function Home() {
         </div>
       </div>
 
-      {/*  */}
+      {/* features */}
       <div className="mt-10 flex max-w-full flex-wrap justify-center gap-5">
         <div className="bg-green-70-0 bg-rose-1000 flex max-w-md items-center justify-start gap-5 p-5 ">
           <div className=" rounded-br-3xl rounded-tl-3xl border bg-green-800 p-3">
