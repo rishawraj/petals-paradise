@@ -1,20 +1,22 @@
 'use client';
-import Link from 'next/link';
 
 import cartIcon from '@/components/icons/cartIcon.svg';
 import leafLogoIcon from '@/components/icons/leafLogoIcon.svg';
 import searchIcon from '@/components/icons/searchIcon.svg';
 import userIcon from '@/components/icons/userIcon.svg';
 import { Button } from '@/components/ui/button';
+import { motion } from 'framer-motion';
 import { MenuIcon, Package, Sprout, Truck, XIcon } from 'lucide-react';
 import Image from 'next/image';
-import { useState } from 'react';
+import Link from 'next/link';
+import { useEffect, useState } from 'react';
 import Footer from './_components/Footer';
 import Testimonials from './_components/Testimonials';
 
 export default function Home() {
   const [isSideMenuOpen, setIsSideMenuOpen] = useState(false);
   const [scrollDisabled, setScrollDisabled] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
 
   const handleMenuClick = () => {
     setIsSideMenuOpen(!isSideMenuOpen);
@@ -22,13 +24,26 @@ export default function Home() {
     document.body.style.overflow = scrollDisabled ? 'auto' : 'hidden';
   };
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      // show navbar after scrolling down 100px (100vh)
+      setIsVisible(scrollTop > 200);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
     <>
       {/* <BreakPoint /> */}
 
       <div className="flex min-h-screen flex-col pb-5 sm:flex-row">
         {/* navbar */}
-        <div className="border-green-5000 border- absolute  mt-5 h-12 w-full  bg-transparent xl:mt-8">
+        <div className="border-green-5000 border- absolute  mt-5 h-12 w-full  bg-transparent xl:mt-8 ">
           <div className="border-rose-4000 border- mx-auto flex w-full justify-between">
             <ul className="border-amber-4000 border- flex w-3/5 px-5 md:justify-evenly">
               <li className="z-20">
@@ -95,6 +110,80 @@ export default function Home() {
           </div>
         </div>
 
+        {/* animated navbar */}
+        {isVisible && !scrollDisabled && (
+          <motion.div
+            initial={{ opacity: 0, y: '-20px' }}
+            whileInView={{ opacity: 1, y: '0' }}
+            className="fixed z-20 flex h-12 w-full items-center bg-gray-100 bg-opacity-15 bg-clip-padding py-5 backdrop-blur-sm backdrop-filter "
+          >
+            <div className="border- mx-auto flex w-full justify-between ">
+              <ul className="border-amber-4000 border- flex w-3/5 px-5 md:justify-evenly">
+                <li className="z-20">
+                  <Link href="/" className="flex gap-1">
+                    <Image
+                      src={leafLogoIcon}
+                      height={24}
+                      width={24}
+                      alt="leaf-logo-icon"
+                    />
+                    <span className="font-bold">Petals</span>
+                  </Link>
+                </li>
+                <div className=" bg-red-2000  hidden w-2/3 font-semibold text-muted-foreground md:flex md:justify-evenly">
+                  <li className="text-primary">
+                    <Link href="/">Home</Link>
+                  </li>
+                  <li>
+                    <Link href="/about">About</Link>
+                  </li>
+                  <li>
+                    <Link href="/products">Products</Link>
+                  </li>
+                  <li>
+                    <Link href="/contact">Contact</Link>
+                  </li>
+                </div>
+              </ul>
+              <ul className="border-purple-4000 border- z-10 hidden w-2/5 justify-end gap-5 pr-[5%] md:flex">
+                <li>
+                  <Link href="/search">
+                    <Image
+                      src={searchIcon}
+                      width={24}
+                      height={24}
+                      alt="search-icon"
+                    />
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/cart">
+                    <Image
+                      src={cartIcon}
+                      width={24}
+                      height={24}
+                      alt="cart-icon"
+                    />
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/profile">
+                    <Image
+                      src={userIcon}
+                      width={24}
+                      height={24}
+                      alt="user-icon"
+                    />
+                  </Link>
+                </li>
+              </ul>
+              <button onClick={handleMenuClick} className=" pr-5 md:hidden">
+                {<MenuIcon />}
+              </button>
+            </div>
+          </motion.div>
+        )}
+
         {/* side menu */}
         {isSideMenuOpen && (
           <div
@@ -104,7 +193,7 @@ export default function Home() {
               scrollbarWidth: scrollDisabled ? 'auto' : 'thin', // Hide the scrollbar thumb
               msOverflowStyle: 'none', // Hide scrollbar in IE and Edge
             }}
-            className="absolute left-0 top-0 z-10 flex h-screen w-full flex-col items-center justify-start  bg-white p-5 md:hidden"
+            className="fixed left-0 top-0 z-10 flex h-screen w-full flex-col items-center justify-start  bg-white p-5 md:hidden"
           >
             {/* overlay bg-image sm */}
             <div className="absolute left-0 top-0 -z-10 h-full w-full bg-white opacity-80 md:hidden"></div>
@@ -179,16 +268,6 @@ export default function Home() {
             INDOOR PLANTS
           </p>
 
-          {/* <h1 className=" mt-2 text-3xl font-medium  sm:text-5xl xl:text-7xl">
-            We help you the
-            <strong className="mt-4 block font-medium">
-              {' '}
-              world safe with <span className="text-green-800">
-                plants
-              </span>{' '}
-            </strong>
-          </h1> */}
-
           <h1 className="mt-2 text-balance  pr-2 text-3xl font-medium sm:text-4xl md:text-5xl xl:text-7xl">
             We help you keep the world safe with
             <span className="text-primary"> plants</span>
@@ -198,6 +277,7 @@ export default function Home() {
             Find your dream plant for your home decoration with us, and we will
             make it happen
           </p>
+
           {/* buttons */}
 
           <div className=" flex gap-4">
