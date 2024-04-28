@@ -5,8 +5,7 @@ export default defineConfig({
   out: './drizzle/migrations',
   driver: 'pg',
   dbCredentials: {
-    connectionString:
-      'postgres://rishaw:raj@2280@localhost:5432/petals_paradise_db',
+    connectionString: process.env.DATABASE_URL as string,
   },
   verbose: true,
   strict: true,
