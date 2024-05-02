@@ -40,6 +40,7 @@ export async function createUser(formData: FormData) {
       last_name,
       phone_number,
     });
+
     success = true;
 
     redirect('/');

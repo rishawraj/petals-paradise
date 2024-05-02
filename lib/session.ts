@@ -11,3 +11,9 @@ export async function decrypt(session: string | undefined = '') {
     console.log('Failed to verify session');
   }
 }
+
+import { cookies } from 'next/headers';
+
+export function deleteSession() {
+  cookies().delete('token');
+}

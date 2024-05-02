@@ -42,7 +42,7 @@ export default function Home() {
       {/* <BreakPoint /> */}
 
       <div className="flex min-h-screen flex-col pb-5 sm:flex-row">
-        {/* navbar */}
+        {/* navbar start */}
         <div className="border-green-5000 border- absolute  mt-5 h-12 w-full  bg-transparent xl:mt-8 ">
           <div className="border-rose-4000 border- mx-auto flex w-full justify-between">
             <ul className="border-amber-4000 border- flex w-3/5 px-5 md:justify-evenly">
@@ -110,7 +110,6 @@ export default function Home() {
           </div>
         </div>
 
-        {/* animated navbar */}
         {isVisible && !scrollDisabled && (
           <motion.div
             initial={{ opacity: 0, y: '-20px' }}
@@ -184,7 +183,6 @@ export default function Home() {
           </motion.div>
         )}
 
-        {/* side menu */}
         {isSideMenuOpen && (
           <div
             style={{
@@ -256,6 +254,7 @@ export default function Home() {
             </div>
           </div>
         )}
+        {/* navbar end */}
 
         {/* text main */}
         <div className="bg-red-2000 bg-rose-2000 bg-red-5000 mt-16 flex min-h-full w-full flex-[3] flex-col items-start  justify-center pl-[6%] ">
@@ -282,10 +281,10 @@ export default function Home() {
 
           <div className=" flex gap-4">
             <Button className="rounded-none" size="lg">
-              Explore Now
+              <Link href="/products">Explore Now</Link>
             </Button>
             <Button className="rounded-none" size="lg" variant="outline">
-              Learn More
+              <Link href="/about">Learn More</Link>
             </Button>
           </div>
 

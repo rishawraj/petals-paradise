@@ -1,11 +1,16 @@
+'use server';
+
 import { db } from '@/drizzle/db';
 import { UserTable } from '@/drizzle/schema';
 import { decrypt } from '@/lib/session';
 import { eq } from 'drizzle-orm';
 import { cookies } from 'next/headers';
 
-async function Profile() {
+export async function UserInfo() {
   const session = cookies().get('token')?.value;
+  if (!session) {
+    return <h1>Error: Login again</h1>;
+  }
   const payload = await decrypt(session);
   const data = await db
     .select()
@@ -13,7 +18,7 @@ async function Profile() {
     .where(eq(UserTable.id, payload?.userId as string));
 
   return (
-    <div>
+    <div className="p-5">
       <h1 className="text-2xl text-red-400">Profile</h1>
       <p>id: {data[0].id}</p>
       <p>username: {data[0].username}</p>
@@ -23,5 +28,3 @@ async function Profile() {
     </div>
   );
 }
-
-export default Profile;

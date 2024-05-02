@@ -33,10 +33,10 @@ function Login() {
             </button>
           </form>
         </div>
-        <div className="mt-2 text-sm">
-          <p>don&appos;t have an account</p>
+        <div className="mt-2 flex gap-1 text-sm">
+          <p>don&apos;t have an account </p>
           <Link className="text-blue-500" href="/signup">
-            sign in here.
+            sign up here.
           </Link>
         </div>
       </div>
