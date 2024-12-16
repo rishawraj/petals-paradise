@@ -137,3 +137,6 @@ export const productCategoryRelations = relations(
     }),
   })
 );
+
+// types
+export type ProductType = typeof ProductTable.$inferSelect;

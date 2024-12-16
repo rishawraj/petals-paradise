@@ -9,10 +9,6 @@ import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 import { z } from 'zod';
 
-//* query db
-//* todo verify password bcrypt
-//* todo generate jwt
-
 const userSchema = z.object({
   username: z.string(),
   password: z.string(),
@@ -50,7 +46,7 @@ export async function generateToken(formData: FormData) {
     console.log(error);
   } finally {
     if (success) {
-      redirect('/');
+      redirect('/products');
     }
   }
 }

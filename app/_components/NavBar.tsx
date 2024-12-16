@@ -17,12 +17,15 @@ import { motion } from 'framer-motion';
 import { MenuIcon, XIcon } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
 function NavBar() {
   const [isSideMenuOpen, setIsSideMenuOpen] = useState(false);
   const [scrollDisabled, setScrollDisabled] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
+
+  const pathname = usePathname();
 
   const handleMenuClick = () => {
     setIsSideMenuOpen(!isSideMenuOpen);
@@ -44,8 +47,6 @@ function NavBar() {
 
   return (
     <nav>
-      {/*  */}
-
       <div className="border-green-5000 border- flex h-12  w-full items-center  bg-transparent xl:mt-2 ">
         <div className="border-rose-4000 border- mx-auto flex w-full justify-between">
           <ul className="border-amber-4000 border- flex w-3/5 px-5 md:justify-evenly">
@@ -61,16 +62,16 @@ function NavBar() {
               </Link>
             </li>
             <div className=" bg-red-2000  hidden w-2/3 font-semibold text-muted-foreground md:flex md:justify-evenly">
-              <li className="text-primary">
+              <li className="">
                 <Link href="/">Home</Link>
               </li>
-              <li>
+              <li className={pathname === '/about' ? 'text-primary' : ''}>
                 <Link href="/about">About</Link>
               </li>
-              <li>
+              <li className={pathname === '/products' ? 'text-primary' : ''}>
                 <Link href="/products">Products</Link>
               </li>
-              <li>
+              <li className={pathname === '/contact' ? 'text-primary' : ''}>
                 <Link href="/contact">Contact</Link>
               </li>
             </div>
@@ -88,7 +89,13 @@ function NavBar() {
             </li>
             <li>
               <Link href="/cart">
-                <Image src={cartIcon} width={24} height={24} alt="cart-icon" />
+                <Image
+                  src={cartIcon}
+                  width={24}
+                  height={24}
+                  alt="cart-icon"
+                  className="text-primary"
+                />
               </Link>
             </li>
             <li>
