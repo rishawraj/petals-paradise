@@ -4,6 +4,7 @@ import ProductCard from './_components/ProductCard';
 async function Products() {
   const getProducts = async () => {
     const data = await db.query.ProductTable.findMany();
+    console.log(data);
     return data;
   };
 
