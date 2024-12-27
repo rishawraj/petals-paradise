@@ -7,7 +7,7 @@ import { eq } from 'drizzle-orm';
 import { cookies } from 'next/headers';
 
 export async function UserInfo() {
-  const session = cookies().get('token')?.value;
+  const session = (await cookies()).get('token')?.value;
   if (!session) {
     return <h1>Error: Login again</h1>;
   }

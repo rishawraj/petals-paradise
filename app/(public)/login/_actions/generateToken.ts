@@ -39,7 +39,7 @@ export async function generateToken(formData: FormData) {
         .setIssuedAt()
         .setExpirationTime('7d')
         .sign(new TextEncoder().encode('secret_key'));
-      cookies().set('token', token);
+      (await cookies()).set('token', token);
     }
     success = true;
   } catch (error) {

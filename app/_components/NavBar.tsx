@@ -114,7 +114,11 @@ function NavBar() {
         <motion.div
           initial={{ opacity: 0, y: '-20px' }}
           whileInView={{ opacity: 1, y: '0' }}
-          className="fixed z-20 -mt-12 flex h-12 w-full items-center bg-gray-100 bg-opacity-15 bg-clip-padding  backdrop-blur-sm backdrop-filter "
+          {...{
+            className:
+              'fixed z-20 -mt-12 flex h-12 w-full items-center bg-gray-100 bg-opacity-15 bg-clip-padding backdrop-blur-sm backdrop-filter',
+          }}
+          // className="fixed z-20 -mt-12 flex h-12 w-full items-center bg-gray-100 bg-opacity-15 bg-clip-padding backdrop-blur-sm backdrop-filter"
         >
           <div className="border- mx-auto flex w-full justify-between ">
             <ul className="border-amber-4000 border- flex w-3/5 px-5 md:justify-evenly">

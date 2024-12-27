@@ -9,7 +9,7 @@ export default async function middleware(req: NextRequest) {
   const isProtectedRoute = protectedRoutes.includes(path);
   const isPublicRoute = publicRoutes.includes(path);
 
-  const cookie = cookies().get('token');
+  const cookie = (await cookies()).get('token');
 
   if (isProtectedRoute && cookie == undefined) {
     console.log('cookie undefined');

@@ -12,8 +12,8 @@ export async function decrypt(session: string | undefined = '') {
   }
 }
 
-import { cookies } from 'next/headers';
+import { cookies, type UnsafeUnwrappedCookies } from 'next/headers';
 
 export function deleteSession() {
-  cookies().delete('token');
+  (cookies() as unknown as UnsafeUnwrappedCookies).delete('token');
 }
