@@ -2,13 +2,17 @@
 
 import cartIcon from '@/components/icons/cartIcon.svg';
 import leafLogoIcon from '@/components/icons/leafLogoIcon.svg';
+import MenuIcon from '@/components/icons/menuIcon.svg';
+import packageIcon from '@/components/icons/packageIcon.svg';
 import searchIcon from '@/components/icons/searchIcon.svg';
+import sproutIcon from '@/components/icons/sproutIcon.svg';
 import userIcon from '@/components/icons/userIcon.svg';
+import XIcon from '@/components/icons/XIcon.svg';
 import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
-import { MenuIcon, Package, Sprout, Truck, XIcon } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
+
 import { useEffect, useState } from 'react';
 import Footer from './_components/Footer';
 import Testimonials from './_components/Testimonials';
@@ -105,7 +109,13 @@ export default function Home() {
               </li>
             </ul>
             <button onClick={handleMenuClick} className=" pr-5 md:hidden">
-              {<MenuIcon />}
+              <Image
+                src={MenuIcon}
+                width={24}
+                height={24}
+                alt="cart-icon"
+                className="text-primary"
+              />
             </button>
           </div>
         </div>
@@ -181,7 +191,13 @@ export default function Home() {
                 </li>
               </ul>
               <button onClick={handleMenuClick} className=" pr-5 md:hidden">
-                {<MenuIcon />}
+                <Image
+                  src={MenuIcon}
+                  width={24}
+                  height={24}
+                  alt="cart-icon"
+                  className="text-primary"
+                />
               </button>
             </div>
           </motion.div>
@@ -202,7 +218,9 @@ export default function Home() {
             <div className="absolute left-0 top-0 -z-20 h-full w-full bg-[url('/sm-home-plant.png')] bg-contain bg-center bg-no-repeat md:hidden"></div>
             {/*  */}
             <div className="bg-rose-2000 mb-10 flex w-full justify-end">
-              <button onClick={handleMenuClick}>{<XIcon />}</button>
+              <button onClick={handleMenuClick}>
+                {<Image src={XIcon} width={24} height={24} alt="X-icon" />}
+              </button>
             </div>
 
             <div className="flex flex-col justify-center p-5">
@@ -371,7 +389,14 @@ export default function Home() {
       <div className="mt-10 flex max-w-full flex-wrap justify-center gap-5">
         <div className="bg-green-70-0 bg-rose-1000 flex max-w-md items-center justify-start gap-5 p-5 ">
           <div className=" rounded-br-3xl rounded-tl-3xl border bg-green-800 p-3">
-            <Package className="h-20 w-20 text-white" />
+            {/* <Package className="h-20 w-20 text-white" /> */}
+
+            <Image
+              src={packageIcon}
+              width={100}
+              height={100}
+              alt="package-icon"
+            />
           </div>
           <div>
             <h3 className="text-2xl font-semibold">Best Packaging</h3>
@@ -380,7 +405,13 @@ export default function Home() {
         </div>
         <div className="bg-green-70-0 bg-rose-1000 flex max-w-md items-center justify-start gap-5 p-5 ">
           <div className=" rounded-br-3xl rounded-tl-3xl border bg-green-800 p-3">
-            <Sprout className="h-20 w-20 text-white" />
+            {/* <Sprout className="h-20 w-20 text-white" /> */}
+            <Image
+              src={sproutIcon}
+              width={100}
+              height={100}
+              alt="sprout-icon"
+            />
           </div>
           <div>
             <h3 className="text-2xl font-semibold">Early Sprouts</h3>
@@ -389,7 +420,13 @@ export default function Home() {
         </div>
         <div className="bg-green-70-0 bg-rose-1000 flex max-w-md items-center justify-start gap-5 p-5 ">
           <div className=" rounded-br-3xl rounded-tl-3xl border bg-green-800 p-3">
-            <Truck className="h-20 w-20 text-white" />
+            {/* <Truck className="h-20 w-20 text-white" /> */}
+            <Image
+              src={packageIcon}
+              width={100}
+              height={100}
+              alt="package-icon"
+            />
           </div>
           <div>
             <h3 className="text-2xl font-semibold">Fast Delivery</h3>

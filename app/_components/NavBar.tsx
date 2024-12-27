@@ -1,20 +1,11 @@
 'use client';
-// import cartIcon from '@/components/icons/cartIcon.svg';
-// import leafLogoIcon from '@/components/icons/leafLogoIcon.svg';
-// import searchIcon from '@/components/icons/searchIcon.svg';
-// import userIcon from '@/components/icons/userIcon.svg';
-// import { motion } from 'framer-motion';
-// import { MenuIcon, XIcon } from 'lucide-react';
-// import Image from 'next/image';
-// import Link from 'next/link';
-// import { useEffect, useState } from 'react';
 
 import cartIcon from '@/components/icons/cartIcon.svg';
 import leafLogoIcon from '@/components/icons/leafLogoIcon.svg';
+import menuIcon from '@/components/icons/menuIcon.svg';
 import searchIcon from '@/components/icons/searchIcon.svg';
 import userIcon from '@/components/icons/userIcon.svg';
 import { motion } from 'framer-motion';
-import { MenuIcon, XIcon } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -105,7 +96,13 @@ function NavBar() {
             </li>
           </ul>
           <button onClick={handleMenuClick} className=" pr-5 md:hidden">
-            {<MenuIcon />}
+            <Image
+              src={menuIcon}
+              width={24}
+              height={24}
+              alt="cart-icon"
+              className="text-primary"
+            />
           </button>
         </div>
       </div>
@@ -118,7 +115,6 @@ function NavBar() {
             className:
               'fixed z-20 -mt-12 flex h-12 w-full items-center bg-gray-100 bg-opacity-15 bg-clip-padding backdrop-blur-sm backdrop-filter',
           }}
-          // className="fixed z-20 -mt-12 flex h-12 w-full items-center bg-gray-100 bg-opacity-15 bg-clip-padding backdrop-blur-sm backdrop-filter"
         >
           <div className="border- mx-auto flex w-full justify-between ">
             <ul className="border-amber-4000 border- flex w-3/5 px-5 md:justify-evenly">
@@ -181,7 +177,7 @@ function NavBar() {
               </li>
             </ul>
             <button onClick={handleMenuClick} className=" pr-5 md:hidden">
-              {<MenuIcon />}
+              {'<XIcon />'}
             </button>
           </div>
         </motion.div>
@@ -202,7 +198,7 @@ function NavBar() {
           <div className="absolute left-0 top-0 -z-20 h-full w-full bg-[url('/sm-home-plant.png')] bg-contain bg-center bg-no-repeat md:hidden"></div>
           {/*  */}
           <div className="bg-rose-2000 mb-10 flex w-full justify-end">
-            <button onClick={handleMenuClick}>{<XIcon />}</button>
+            <button onClick={handleMenuClick}>{'XIcon'}</button>
           </div>
 
           <div className="flex flex-col justify-center p-5">
